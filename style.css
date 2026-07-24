@@ -22,6 +22,21 @@ html{
     scroll-behavior: smooth;
 }
 
+body::before{
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+    radial-gradient(circle at 15% 20%, 
+    rgba(255,79,200,0.08),
+    transparent 35%),
+
+    radial-gradient(circle at 80% 75%,
+    rgba(110,187,255,0.08),
+    transparent 35%);
+}
+
 body{
 
     background: #080808;
@@ -155,6 +170,20 @@ nav a:hover{
    transition: 0.35s;
 }
 
+.buttons a,
+.ticket-card a {
+    transition:
+    transform 0.3s,
+    box-shadow 0.3s,
+    filter 0.3s;
+}
+
+.buttons a:hover,
+.ticket-card a:hover{
+    transform:translateY(-4px);
+    filter:brightness(1.08);
+}
+
 
 .buttons a:hover{
     transform: translateY(-5px);
@@ -218,6 +247,21 @@ nav a:hover{
     margin: 15px;
     font-size: 0.9rem;
 
+}
+
+.section-tag::after{
+    content:"";
+    display:block;
+    width: 90px;
+    height: 3px;
+    margin: 14px auto 0;
+    border-radius: 999px;
+    background: linear-gradient(
+        90deg,
+        var(--orange),
+        var(--pink),
+        var(--blue)
+    );
 }
 
 .about h2{
@@ -403,7 +447,8 @@ nav a:hover{
 
     border-radius: 24px;
     border: 2px solid rgba(255,79,200,0.45);
-    transition: 0.35s ease;
+    transition: 0.35s ease,
+            box-shadow 0.35s;
 }
 
 .lineup-image:hover{
@@ -416,3 +461,120 @@ nav a:hover{
     transform: scale(1.03);
 }
 
+.tickets{
+    width: 90%;
+    max-width: 1300px;
+    margin: 140px auto;
+    text-align: center;
+}
+
+.ticket-grid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 35px;
+    margin-top:70px;
+}
+
+.ticket-card{
+    padding: 30px;
+    border-radius: 28px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(20px);
+    transition: 0.35s;
+}
+
+.ticket-card:hover{
+    transform: translateY(-10px);
+}
+
+.ticket-card img{
+    width: 100%;
+    border-radius: 7.5px;
+    margin-bottom: 25px;
+}
+
+.ticket-card a{
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 34px;
+    border-radius: 999px;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.ticket-card h3{
+    font-size:2rem;
+    margin-bottom:8px;
+}
+
+.artist{
+    letter-spacing: 1.15px;
+    margin-bottom: 15px;
+    opacity:0.8;
+}
+
+.ticket-card h4{
+    font-size: 2rem;
+    margin-bottom: 25px;
+}
+
+.fri {
+    border: 2px solid rgba(112, 88, 65, 0.4);
+}
+
+.fri:hover{
+    box-shadow: 0 0 30px rgba(112, 88, 65, 0.4);
+}
+
+.fri a{
+    background: rgba(112, 88, 65, 0.8);
+}
+
+.fri a:hover{
+    background:rgb(112, 88, 65);
+}
+
+.sat{
+    border: 2px solid rgba(235, 81, 101, 0.4);
+    transform: scale(1.04);
+}
+
+.sat:hover{
+    box-shadow: 0 0 30px rgba(235, 81, 101, 0.4);
+    transform: scale(1.04) translateY(-10px);
+}
+
+.sat a{
+    background: rgba(235, 81, 101, 0.8);
+}
+
+.sat a:hover{
+    background: rgb(235,81,101);
+}
+
+.sun{
+    border: 2px solid rgba(255, 63, 169, 0.4);
+}
+
+.sun:hover{
+    box-shadow: 0 0 30px rgba(255, 63, 169, 0.4);
+}
+
+.sun a{
+    background: rgba(255, 63, 169, 0.8);
+}
+
+.sun a:hover{
+    background: rgb(255, 63, 169);
+}
+
+.artist-card img,
+.ticket-card img {
+    filter: brightness(0.9);
+}
+
+.artist-card:hover img,
+.ticket-card:hover img{
+    filter:brightness(1.15);
+}
