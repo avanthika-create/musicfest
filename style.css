@@ -59,7 +59,7 @@ nav{
    display: flex;
    justify-content: space-between;
    align-items: center;
-   padding: 18px 40px;
+   padding: 14px 36px;
    z-index: 100;
 
    border-radius: 999px;
@@ -77,7 +77,7 @@ nav{
 }
 
 .logo{
-    letter-spacing: 2px;
+    font-size: 1.7rem;
 }
 
 nav ul{
@@ -91,6 +91,7 @@ nav a{
     color: white;
     text-decoration: none;
     transition: 0.3s;
+    font-size: 1rem;
 }
 
 nav a:hover{
@@ -103,18 +104,19 @@ nav a:hover{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap:-2px;
     align-items: center;
     text-align: center;
     padding: 40px;
 }
 
 .musicfest{
-    width: min(650px,80vw);
+    width: min(38vw,560px);
 }
 
 .year{
-    width: min(500px,55vw);
-    margin-top: -20px;
+    width: min(24vw,350px);
+    margin-top: -40px;
 }
 
 .three-days{
@@ -125,13 +127,13 @@ nav a:hover{
 }
 
 .three-days img{
-    height: 200px;
+    height: 125px;
 }
 
 .hero-content p{
-    margin-top: 40px;
-    font-size: 1.15rem;
-    letter-spacing: 4px;
+    margin-top: 30px;
+    font-size: 1rem;
+    letter-spacing: 3px;
     text-transform: uppercase;
     color: white;
     text-shadow: 0 20px 12px rgba(0,0,0,0.45);
@@ -144,7 +146,7 @@ nav a:hover{
 }
 
 .buttons a{
-   padding: 18px 48px;
+   padding: 16px 48px;
    border-radius: 999px;
    text-decoration: none;
    font-size: 1rem;
@@ -174,7 +176,7 @@ nav a:hover{
 
 .buy-btn:hover{
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(255,122,0,0.5);
+    background: rgba(255,255,255,0.18);
 }
 
 .lineup-btn{
@@ -205,4 +207,156 @@ nav a:hover{
     grid-template-columns: 1fr 1fr; 
     align-items: center;
     gap: 80px;
+}
+
+.section-tag{
+    color: var(--pink);
+    letter-spacing: 4px;
+    margin: 15px;
+    font-size: 0.9rem;
+
+}
+
+.about h2{
+    font-size:3.5rem;
+    margin-bottom:30px;
+}
+
+.about-text{
+    line-height:1.8;
+    color:#d5d5d5;
+    font-family: "Hammersmith One", sans-serif;
+    font: 1.05rem;
+}
+
+.festival-stats{
+    display: flex;
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.stat h3{
+    font-size:2.5rem;
+    color: var(--orange);
+}
+
+.stat p{
+    margin-top: 8px;
+    color: #cfcfcf;
+}
+
+.about-right{
+    display: flex;
+    justify-content:center;
+}
+
+.about-right img{
+    transition: 0.4s;
+}
+
+.about-right img:hover{
+    transform:rotate(-3deg) scale(1.04);
+}
+
+.about{
+    position: relative;
+}
+
+.about::before{
+    content:"";
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    right: -100px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: radial-graident(
+                circle,
+                rgba(195,0,255,0.30) 0%,
+                rgba(255,79,200,0.18) 35%,
+                transparent 70%
+    );
+
+    filter: blur(120px);
+    z-index:-1;
+
+}
+
+.about-right::before{
+    content: "";
+    position: absolute;
+    width: 550px;
+    height: 550px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(
+    circle,
+    rgba(195,0,255,.30),
+    rgba(110,187,255,.25),
+    rgba(255,79,200,.18),
+    transparent 75%
+    );
+
+    filter: blur(100px);
+    z-index: -1;
+}
+
+.headliners{
+    width:90%;
+    max-width: 1300px;
+    margin: 150px auto;
+    text-align: center;
+}
+
+.artist-grid{
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 45px;
+}
+
+.artist-card{
+    transition: 0.35s ease;
+    cursor: pointer;
+}
+
+.artist-card img {
+    width: 100%;
+    border-radius: 20px;
+    border: 2px solid rgba(255,255,255,0.08);
+    transition: 0.35s;
+}
+
+.artist-card:hover{
+    transform:translateY(-10px) scale(1.03);
+}
+
+.artist-card:hover img{
+    border-color:var(--pink);
+    box-shadow:
+    0 20px 40px rgba(195, 0, 255, 0.28);
+}
+
+.artist-card h3{
+    margin-top: 15px;
+    font-size: 3rem;
+}
+
+.artist-card p{
+    margin-top:8px;
+    color: #bdbdbd;
+    letter-spacing: 2px;
+}
+
+.friday{
+    color: var(--orange);
+}
+
+.saturday{
+    color: var(--pink);
+}
+
+.sunday{
+    color: var(--blue);
 }
