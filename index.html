@@ -151,53 +151,65 @@
         </section>
 
         <div class="checkout-modal" id="checkoutModal">
-            <div class="checkout-box">
-                <span class="close">&times;</span>
-                <h2>Checkout</h2>
-                <p>Complete your MusicFest purchase.</p>
 
-                <input 
+         <div class="checkout-box">
+
+            <span class="close">&times;</span>
+
+        <div class="checkout-form">
+
+            <h2>Checkout</h2>
+
+            <p>Complete your MusicFest purchase.</p>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Cardholder Name">
+
+            <input
+                type="text"
+                id="cardNumber"
+                placeholder="Demo Card Number">
+
+            <div class="card-row">
+
+                <input
                     type="text"
-                    id="name"
-                    placeholder="Cardholder Name">
+                    id="expiry"
+                    placeholder="MM/YY">
 
-                    <input
-                        type="email"
-                        id="cardNumber"
-                        placeholder="Card Number">
-
-                    <div class="card-row">
-                        <input
-                            type="text"
-                            id="expiry"
-                            placeholder="MM/YY">
-
-                            <input 
-                                type="password"
-                                id="cvv"
-                                placeholder="CVV">
-                    </div>
-
-                    <button id="purchaseBtn">
-                        Complete Purchase
-                    </button>
-            </div>
-
-            <div class="success-screen" id="successScreen">
-                <h2>Purchase Complete!</h2>
-                <p id="successMessage">
-                    Thank you for purchasing your ticket.
-                </p>
-
-                <button id="downloadBtn">
-                    Download Ticket
-                </button>
+                <input
+                    type="password"
+                    id="cvv"
+                    placeholder="CVV">
 
             </div>
+
+            <button type="button" id="purchaseBtn">
+                Complete Purchase
+            </button>
 
         </div>
 
-    </div>
+
+        <div class="success-screen" id="successScreen">
+
+            <h2>Purchase Complete!</h2>
+
+            <p id="successMessage">
+                Thank you for purchasing your ticket.
+            </p>
+
+            <button type="button" id="downloadBtn">
+                Download Ticket
+            </button>
+
+             </div>
+
+        </div>
+
+        </div>
 
         <script src="script.js"></script>
     </body>
