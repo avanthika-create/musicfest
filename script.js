@@ -115,7 +115,7 @@ const artistSchedule = [
     { name: "Charli XCX", day: "Saturday", stage: "Main Stage", start: "19:30", end: "20:30"},
     { name: "Beabadoobee", day: "Saturday", stage: "Bay Stage", start: "20:00", end: "21:00"},
     { name: "Zara Larsson", day: "Saturday", stage: "Neon Stage", start: "18:30", end: "19:30"},
-    { name: "DPR Iam", day: "Saturday", stage: "Main Stage", start: "17:30", end: "18:30"},
+    { name: "DPR Ian", day: "Saturday", stage: "Main Stage", start: "17:30", end: "18:30"},
     { name: "FKA Twigs", day: "Saturday", stage: "Bay Stage", start: "17:45", end: "18:45"},
     { name: "The Marías", day: "Saturday", stage: "Neon Stage", start: "16:30", end: "17:30"},
     { name: "Wallows", day: "Saturday", stage: "Bay Stage", start: "16:15", end: "17:00"},
@@ -139,3 +139,142 @@ const artistSchedule = [
     { name: "Kaytranada", day: "Sunday", stage: "Neon Stage", start: "17:45", end: "18:30"},
 
 ];
+
+const scheduleContainer = document.getElementById("artistSchedule");
+const dayTabs = document.querySelectorAll(".day-tab");
+
+let currentDay = "Friday";
+let mySchedule = [];
+
+function renderArtistSchedule(day){
+
+    scheduleContainer.innerHTML = "";
+
+    const dayArtists = artistSchedule.filter(
+        artist => artist.day === day
+    );
+
+    dayArtists.forEach(artist => {
+        const artistRow = document.createElement("div");
+        artistRow.classList.add("schedule-artist");
+        artistRow.innerHTML = `
+            <div class="schedule-time">
+                ${artist.start} - ${artist.end}
+            </div>
+
+            <div class="schedule-info">
+                <h3>${artist.name}</h3>
+                <p>${artist.stage}</p>
+            </div>
+
+            <button class="add-artist">
+                + Add
+            </button>
+        `;
+
+        const addButton =
+            artistRow.querySelector(".add-artist");
+        const alreadyAdded = mySchedule.some(
+            item => item.name === artist.name
+        );
+        if(alreadyAdded){
+            addButton.textContent = "✓ Added";
+            addButton.disabled = true;
+        }
+        addButton.addEventListener("click", () => {
+
+            addToSchedule(artist);
+
+            addButton.textContent = "✓ Added";
+            addButton.disabled = true;
+
+        });
+        scheduleContainer.appendChild(artistRow);
+
+    });
+}
+
+
+function addToSchedule(artist){
+
+    const alreadyAdded = mySchedule.some(
+        item => item.name === artist.name
+    );
+
+    if(alreadyAdded){
+        return;
+    }
+
+    mySchedule.push(artist);
+
+    console.log("ADDING:", artist.name);
+
+    renderMySchedule();
+}
+
+
+function renderMySchedule(){
+
+    const myScheduleContainer =
+        document.getElementById("mySchedule");
+
+    myScheduleContainer.innerHTML = "";
+
+
+    if(mySchedule.length === 0){
+
+        myScheduleContainer.innerHTML = `
+            <p class="empty-schedule">
+                You haven't added any artists yet.
+            </p>
+        `;
+
+        return;
+    }
+
+
+    mySchedule.forEach(artist => {
+
+        const item = document.createElement("div");
+
+        item.classList.add("my-schedule-item");
+
+        item.innerHTML = `
+            <div>
+                <h3>${artist.name}</h3>
+
+                <p>
+                    ${artist.day} •
+                    ${artist.start} - ${artist.end} •
+                    ${artist.stage}
+                </p>
+            </div>
+
+            <button class="remove-artist">
+                Remove
+            </button>
+        `;
+
+        myScheduleContainer.appendChild(item);
+
+    });
+
+}
+
+
+dayTabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+
+        dayTabs.forEach(button => {
+            button.classList.remove("active");
+        });
+
+        tab.classList.add("active");
+        currentDay = tab.dataset.day;
+        renderArtistSchedule(currentDay);
+
+    });
+
+});
+
+renderArtistSchedule(currentDay);
