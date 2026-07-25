@@ -127,7 +127,7 @@
                     <h3>Friday Pass</h3>
                     <p class="artist">Travis Scott</p>
                     <h4>$226</h4>
-                    <a href="#">Buy Ticket</a>
+                    <a href="#" class="ticket-buy" data-ticket="friday">Buy Ticket</a>
                 </div>
 
                 <div class="ticket-card sat">
@@ -135,7 +135,7 @@
                     <h3>Saturday Pass</h3>
                     <p class="artist">PinkPantheress</p>
                     <h4>$234</h4>
-                    <a href="#">Buy Ticket</a>
+                    <a href="#" class="ticket-buy" data-ticket="saturday">Buy Ticket</a>
                 </div>
 
                 <div class="ticket-card sun">
@@ -143,14 +143,63 @@
                     <h3>Sunday Pass</h3>
                     <p class="artist">Tyler, the Creator</p>
                     <h4>$217</h4>
-                    <a href="#">Buy Ticket</a>
+                    <a href="#" class="ticket-buy" data-ticket="sunday">Buy Ticket</a>
                 </div>
 
             </div>
 
         </section>
 
-        <script src="myscripts.js"></script>
+        <div class="checkout-modal" id="checkoutModal">
+            <div class="checkout-box">
+                <span class="close">&times;</span>
+                <h2>Checkout</h2>
+                <p>Complete your MusicFest purchase.</p>
+
+                <input 
+                    type="text"
+                    id="name"
+                    placeholder="Cardholder Name">
+
+                    <input
+                        type="email"
+                        id="cardNumber"
+                        placeholder="Card Number">
+
+                    <div class="card-row">
+                        <input
+                            type="text"
+                            id="expiry"
+                            placeholder="MM/YY">
+
+                            <input 
+                                type="password"
+                                id="cvv"
+                                placeholder="CVV">
+                    </div>
+
+                    <button id="purchaseBtn">
+                        Complete Purchase
+                    </button>
+            </div>
+
+            <div class="success-screen" id="successScreen">
+                <h2>Purchase Complete!</h2>
+                <p id="successMessage">
+                    Thank you for purchasing your ticket.
+                </p>
+
+                <button id="downloadBtn">
+                    Download Ticket
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+        <script src="script.js"></script>
     </body>
 
 </html>
