@@ -167,7 +167,7 @@
                     <h3>Friday Pass</h3>
                     <p class="artist">Travis Scott</p>
                     <h4>$226</h4>
-                    <a href="#" class="ticket-buy" data-ticket="friday">Buy Ticket</a>
+                    <button class="cart-add" data-ticket="friday">Add to Cart</button>
                 </div>
 
                 <div class="ticket-card sat">
@@ -175,7 +175,7 @@
                     <h3>Saturday Pass</h3>
                     <p class="artist">PinkPantheress</p>
                     <h4>$234</h4>
-                    <a href="#" class="ticket-buy" data-ticket="saturday">Buy Ticket</a>
+                    <button class="cart-add" data-ticket="saturday">Add to Cart</button>
                 </div>
 
                 <div class="ticket-card sun">
@@ -183,8 +183,72 @@
                     <h3>Sunday Pass</h3>
                     <p class="artist">Tyler, the Creator</p>
                     <h4>$217</h4>
-                    <a href="#" class="ticket-buy" data-ticket="sunday">Buy Ticket</a>
+                    <button class="cart-add" data-ticket="sunday">Add to Cart</button>
                 </div>
+
+            </div>
+
+            <div class="ticket-cart">
+                <p class="section-tag">YOUR CART</p>
+                <h2>Festival Passes</h2>
+                <div class="cart-row">
+                    <div> 
+                        <h3>Friday Pass</h3>
+                        <p>$226 each</p>
+                    </div>
+
+                    <div class="quantity-controls">
+                        <button class="qty-minus" data-ticket="friday">-</button>
+                        <span id="fridayQty">0</span>
+                        <button class="qty-plus" data-ticket="friday">+</button>
+                    </div>
+                </div>
+
+                <div class="cart-row">
+                    <div>
+                        <h3>Saturday Pass</h3>
+                        <p>$234 each</p>
+                    </div>
+
+                    <div class="quantity-controls">
+                        <button class="qty-minus" data-ticket="saturday">-</button>
+                        <span id="saturdayQty">0</span>
+                        <button class="qty-plus" data-ticket="saturday">+</button>
+                    </div>
+                </div>
+
+                <div class="cart-row">
+                    <div>
+                        <h3>Sunday Pass</h3>
+                        <p>$217 each</p>
+                    </div>
+
+                    <div class="quantity-controls">
+                        <button class="qty-minus" data-ticket="sunday">-</button>
+                        <span id="sundayQty">0</span>
+                        <button class="qty-plus" data-ticket="sunday">+</button>
+                    </div>
+                </div>
+
+                <div class="cart-total">
+                    <div><span>Subtotal</span>
+                        <span id="cartSubtotal">$0.00s</span>
+                    </div>
+
+                    <div>
+                        <span>Service Fee</span>
+                        <span id="cartFee">$0.00</span>
+                    </div>
+
+                    <div class="total-line">
+                        <span>Total</span>
+                        <span id="cartTotal">$0.00</span>
+                    </div>
+                </div>
+        
+                <button id="cartCheckout">
+                    Checkout
+                </button>
 
             </div>
 
@@ -203,6 +267,8 @@
             <h2>Checkout</h2>
 
             <p>Complete your MusicFest purchase.</p>
+
+            <div class="checkout-summary" id="checkoutSummary"></div>
 
             <input
                 type="text"

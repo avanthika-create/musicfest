@@ -918,3 +918,35 @@ nav a:hover{
 #purchaseBtn:active{
     transform: translateY(0) scale(0.98);
 }
+
+.checkout-summary{
+    margin: 25px 0;
+    padding: 18px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    text-align: left;
+}
+
+.checkout-item{ 
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 10px 0;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.checkout-divider{
+    height: 1px;
+    background: rgba(255,255,255,0.12);
+    margin: 15px 0;
+}
+
+.checkout-final-total{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    font-size: 1.15rem;
+    color: white;
+}

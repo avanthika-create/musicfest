@@ -1,4 +1,140 @@
-//ticket system
+
+const ticketCart = {
+    friday: {
+        name: "Friday Pass",
+        price: 226,
+        quantity: 0
+    },
+
+    saturday: {
+        name: "Saturday Pass",
+        price: 234,
+        quantity: 0
+    },
+
+    sunday: {
+        name: "Sunday Pass",
+        price: 217,
+        quantity: 0
+    }
+};
+
+function renderCart(){
+    document.getElementById("fridayQty").textContent = 
+        ticketCart.friday.quantity;
+
+    document.getElementById("saturdayQty").textContent = 
+        ticketCart.saturday.quantity;
+
+    document.getElementById("sundayQty").textContent = 
+        ticketCart.sunday.quantity;
+
+    const subtotal = 
+        ticketCart.friday.price * ticketCart.friday.quantity +
+        ticketCart.saturday.price * ticketCart.saturday.quantity +
+        ticketCart.sunday.price * ticketCart.sunday.quantity;
+
+    const serviceFee = subtotal * 0.08;
+    const total = subtotal + serviceFee;
+
+    document.getElementById("cartSubtotal").textContent =
+        `$${subtotal.toFixed(2)}`;
+    document.getElementById("cartFee").textContent = 
+        `$${serviceFee.toFixed(2)}`;
+    document.getElementById("cartTotal").textContent =
+        `$${total.toFixed(2)}`;
+}
+
+document.querySelectorAll(".cart-add").forEach(button => {
+    button.addEventListener("click", () => {
+        const ticket = button.dataset.ticket;
+        ticketCart[ticket].quantity++;
+        renderCart();
+    });
+});
+
+document.querySelectorAll(".qty-plus").forEach(button => {
+    button.addEventListener("click", () => {
+        const ticket = button.dataset.ticket;
+        ticketCart[ticket].quantity++;
+        renderCart();
+    });
+});
+
+document.querySelectorAll(".qty-minus").forEach(button => {
+    button.addEventListener("click", () => {
+        const ticket = button.dataset.ticket;
+        if(ticketCart[ticket].quantity > 0) {
+            ticketCart[ticket].quantity--;
+        }
+        renderCart();
+    });
+});
+
+const cartCheckout = document.getElementById("cartCheckout");
+cartCheckout.addEventListener("click", () => {
+    const totalQuanity = 
+        ticketCart.friday.quantity +
+        ticketCart.saturday.quantity +
+        ticketCart.sunday.quantity;
+    if(totalQuanity === 0){
+        alert("Your cart is empty!");
+    }
+    renderCheckoutSummary();
+    modal.style.display = "flex";
+});
+
+function renderCheckoutSummary(){
+    const summary = document.getElementById("checkoutSummary");
+    let html = "";
+    let subtotal = 0; 
+    Object.entries(ticketCart).forEach(([day, ticket]) => {
+        if(ticket.quantity > 0){
+            const itemTotal = 
+                ticket.price * ticket.quantity;
+            subtotal += itemTotal;
+
+            html += `
+            <div class="checkout-item">
+            <span> 
+            ${ticket.name} x ${ticket.quantity}
+            </span>
+            <span>
+            $${itemTotal.toFixed(2)}
+            </span>
+            </div>
+            
+            `;
+        }
+    });
+
+    const fee = subtotal * 0.08;
+    const total = subtotal + fee;
+
+    html += `
+        <div class="checkout-divider"></div>
+
+        <div class="checkout-item">
+        <span>Service Fee</span>
+        <span>$${fee.toFixed(2)}</span>
+        </div>
+
+        <div class="checkout-final-total">
+        <span>Total</span>
+        <span>$${total.toFixed(2)}</span>
+        </div>
+    `;
+
+    summary.innerHTML = html;
+}
+
+document.querySelectorAll(".cart-add").forEach(button => {
+    button.addEventListener("click", () => {
+        const ticket = button.dataset.ticket;
+        ticketCart[ticket].quantity++;
+        renderCart();
+    });
+});
 
 let selectedTicket = "";
 
@@ -38,7 +174,7 @@ purchaseBtn.addEventListener("click", () => {
     }
 });
 
-function downloadTicket(){
+function downloadTickets(){
     let file="";
 
     const customerName = document 
@@ -47,25 +183,24 @@ function downloadTicket(){
         .trim()
         .replace(/\s+/g, "-")
 
-    if(selectedTicket==="friday"){
-        file="images/tickets/day1ticket.png";
-    }
+    const ticketFiles = {
+        friday: "images/tickets/day1ticket.png",
+        saturday: "images/ticket/day2ticket.png", 
+        sunday: "images/tickets/day3ticket.png"
+    };
 
-    if(selectedTicket==="saturday"){
-        file="images/tickets/day2ticket.png";
-    }
+    Object.entries(ticketCart).forEach(([day, ticket]) => {
+        for(let i = 1; i <= ticket.quantity; i++){
+            const link = document.createElement("a");
+            link.href = ticketFiles[day];
+            link.download =
+                `MusicFest-${day}-${customerName}-${i}.png`;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+        }
+    });
 
-    if(selectedTicket==="sunday"){
-        file="images/tickets/day3ticket.png";
-    }
-
-    const link=document.createElement("a");
-    link.href= file;
-    link.download = 
-        `MusicFest-${selectedTicket}-${customerName}.png`;
-
-    link.click();
-    link.remove();
 
     modal.style.display = "none";
 
@@ -76,7 +211,7 @@ function downloadTicket(){
 
 document
 .getElementById("downloadBtn")
-.addEventListener("click", downloadTicket);
+.addEventListener("click", downloadTickets);
 
 function completePurchase(){
     document.querySelector(".checkout-form").style.display = "none";
