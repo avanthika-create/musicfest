@@ -1,5 +1,8 @@
 MusicFest is an interactive website for a fictional 3-day music festival in Singapore. It is for horizons at Hack Club.
-I wanted to combine graphic design with coding and make an interactive festival-themed website 
+I wanted to combine graphic design with coding and make an interactive festival-themed website.
+I used AI as a debugging and learning tool while working on this project. I mainly used it to help find errors in my code, explain why something wasn't working, and teach me JavaScript functions that I hadn't used before.
+I wrote and tested the code as I worked through these features and made changes based on what I learned.
+AI was not used to create the graphics/design of the website.
 
 ## Features
 
