@@ -205,12 +205,66 @@ function addToSchedule(artist){
         return;
     }
 
+    const conflict = mySchedule.find(existing => {
+        return (
+            existing.day === artist.day &&
+            artist.start < existing.end &&
+            artist.end > existing.start
+        );
+    });
+
+    if(conflict){
+        showConflict(artist, conflict);
+        return;
+    }
+
     mySchedule.push(artist);
 
-    console.log("ADDING:", artist.name);
-
+    
     renderMySchedule();
+    renderArtistSchedule(currentDay);
 }
+
+let pendingArtist = null; 
+function showConflict(newArtist, existingArtist){
+    pendingArtist = newArtist;
+    const conflictModal = 
+        document.getElementById("conflictModal");
+
+    const conflictMessage = 
+        document.getElementById("conflictMessage");
+
+        conflictMessage.innerHTML = `
+        <strong>${newArtist.name}</strong>
+        (${newArtist.start} - ${newArtist.end})
+        overlaps with
+        <strong>${existingArtist.name}</strong>
+        (${existingArtist.start} - ${existingArtist.end}).
+        `;
+        
+        conflictModal.style.display = "flex";
+}
+
+document
+.getElementById("keepBothBtn")
+.addEventListener("click", () => {
+    if(pendingArtist){
+        mySchedule.push(pendingArtist);
+        renderMySchedule();
+        renderArtistSchedule(currentDay);
+    }
+
+    pendingArtist = null;
+    document.getElementById("conflictModal").style.display = "none";
+
+});
+
+document
+.getElementById("cancelConflictBtn")
+.addEventListener("click", () => {
+    pendingArtist = null;
+    document.getElementById("conflictModal").style.display = "none";
+});
 
 
 function renderMySchedule(){
@@ -232,6 +286,19 @@ function renderMySchedule(){
         return;
     }
 
+    const dayOrder = {
+        Friday: 1, 
+        Saturday: 2,
+        Sunday: 3
+    };
+
+    mySchedule.sort((a,b) => {
+        if(dayOrder[a.day] !== dayOrder[b.day]){
+            return dayOrder[a.day] !== dayOrder[b.day];
+        }
+
+        return a.start.localeCompare(b.start);
+    });
 
     mySchedule.forEach(artist => {
 

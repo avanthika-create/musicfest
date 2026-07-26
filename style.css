@@ -802,3 +802,119 @@ nav a:hover{
     border-color: rgba(255,63,169,0.8);
     box-shadow: 0 0 22px rgba(255,63,169,0.35);
 }
+
+.conflict-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 28px;
+}
+
+.conflict-buttons button{
+    padding: 11px 25px;
+    border-radius: 999px;
+    font-family: "Hammersmith One", sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#keepBothBtn {
+    border: 1px solid rgba(255,79,200,0.6);
+    background: linear-gradient(
+        90deg,
+        rgba(195,0,255,0.75),
+        rgba(255,79,200,0.75)
+    );
+    color: white;
+    box-shadow: 0 0 20px rgba(255,79,200,0.18);
+}
+
+#keepBothBtn:hover{
+    transform: translate(-3px);
+    box-shadow: 0 0 28px rgba(255, 79, 200, 0.4);
+}
+
+#cancelConflictBtn{
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255,255,255,0.05);
+    color: #bbb;
+}
+
+#cancelConflictBtn:hover{
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.4);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.conflict-modal{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.conflict-box{
+    width: 90%;
+    max-width: 480px;
+    padding: 40px;
+    border-radius: 28px;
+    background: rgba(18,18,18,0.92);
+    border: 1px solid rgba(255, 79, 200, 0.25);
+    box-shadow: 0 0 60px rgba(195, 0, 255, 0.18),
+}
+
+.conflict-box h2{
+    margin-bottom: 15px;
+    font-size: 2rem;
+}
+
+#conflictMessage{
+    color: #bbb;
+    line-height: 1.7;
+}
+
+#conflictMessage strong{
+    color: white;
+}
+
+#puchaseBtn{
+    width: 100%;
+    margin-top: 22px;
+    padding: 14px 25px;
+    border: 1px solid rgba(255, 79, 200, 0.45);
+    border-radius: 999px;
+    background: linear-gradient(
+        90deg,
+        rgba(195, 0, 255, 0.85),
+        rgba(255,79,200,0.85)
+    );
+
+    color: white;
+    font-family: "Hammersmith One", sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(195, 0, 255, 0.18);
+    transition: 0.3s ease;
+}
+
+#purchaseBtn:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 35px rgba(255,79,200,0.35);
+    background: linear-gradient(
+        90deg, 
+        rgba(195,0, 255,1),
+        rgba(255,79,200,1)
+    );
+}
+
+#purchaseBtn:active{
+    transform: translateY(0) scale(0.98);
+}
