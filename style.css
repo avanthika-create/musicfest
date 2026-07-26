@@ -67,33 +67,39 @@ body{
 }
 
 nav{
-   position: relative;
-   width: 92%;
-   max-width: 1400px;
-   margin: 20px auto 0;
+   position: fixed;
+   top: 1px;
+   width: 88%;
+   max-width: 1250px;
+   left: 50%;
+   transform: translateX(-50%);
    display: flex;
    justify-content: space-between;
    align-items: center;
-   padding: 14px 36px;
-   z-index: 100;
+   padding: 4px 36px;
+   z-index: 1000;
+   border-radius: 13px;
 
-   border-radius: 999px;
+
    background: linear-gradient(
-        90deg,
-        rgba(123,31,162,.35),
-        rgba(195,0,255,.25),
-        rgba(255,79,200,.30)
-    );
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.15);
-    
-    box-shadow:
-        0 8px 30px rgba(195,0,255,.18);
+    90deg,
+    rgba(123,31,162,0.35),
+    rgba(195,0,255,0.25),
+    rgba(255,79,200,0.30)
+   );
+
+   backdrop-filter: blur(20px);
+   border: 1px solid rgba(255,255,255,0.15);
 
 }
 
 .logo{
     font-size: 1.7rem;
+}
+
+.logo-link{
+    text-decoration: none;
+    color: white;
 }
 
 nav ul{
@@ -674,12 +680,125 @@ nav a:hover{
 }
 
 .add-artist{
-    padding: 10px 22px;
-    border: none;
+    min-width: 95px;
+    padding: 10px 20px;
     border-radius: 999px;
-    background: rgba(255,79,200,0.15);
+    border: 1px solid rgba(255,79,200,0.45);
+    background: rgba(255,79,200,0.08);
     color: var(--pink);
-    font-family: inherit;
+    font-family: "Hammersmith One", sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    cursor: pointer;  
+}
+
+.add-artist:hover{
+    background: var(--pink);
+    color: white;
+    box-shadow: 0 0 20px rgba(255,79,200,0.35);
+    transform: translateY(-2px);
+}
+
+.add-artist:disabled{
+    background: rgba(120,214,90,0.10);
+    border-color: rgba(120,214,90,0.45);
+    color: var(--green);
+    cursor: default;
+    opacity: 1;
+}
+
+.add-artist:disabled:hover{
+    transform: none;
+    box-shadow: none;
+}
+
+.remove-artist{
+    padding: 9px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,106,0,0.35);
+    background: rgba(255,106,0,0.08);
+    color: var(--orange);
+    font-family: "Hammersmith One", sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.3s ease;
+}
+
+.remove-aritist:hover{
+    background: var(--orange);
+    color: white;
+    box-shadow: 0 0 20px rgba(255,106,0,0.3);
+    transform: translateY(-2px);
+}
+
+.my-schedule-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    text-align: left;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: 0.3s ease;
+}
+
+.my-schedule-item:hover{
+    border-color: rgba(195,0,255,0.35);
+    box-shadow: 0 0 25px(195,0,255,0.08);
+}
+
+.my-schedule-item h3{
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.my-schedule-tem p{
+    color: #aaa;
+    font-size: 0.8rem;
+}
+
+.schedule-tabs{
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin: 40px 0;
+}
+
+.day-tab{
+    min-width: 125px;
+    padding: 11px 26px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.04);
+    color: #aaa;
+    font-family: "Hammersmith One", sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.day-tab[data-day="Friday"].active{
+    color: white;
+    background: rgba(112,88,65,0.25);
+    border-color: rgba(112, 88, 65, 0.8);
+    box-shadow: 0 0 22px rgba(112,88,65,0.35);
+}
+
+.day-tab[data-day="Saturday"].active{
+    color: white;
+    background: rgba(235,81,101,0.20);
+    border-color: rgba(235,81,101,0.8);
+    box-shadow: 0 0 22px rgba(235,81,101,0.35);
+}
+
+.day-tab[data-day="Sunday"].active{
+    color: white;
+    background: rgba(235,63,169,0.20);
+    border-color: rgba(255,63,169,0.8);
+    box-shadow: 0 0 22px rgba(255,63,169,0.35);
 }

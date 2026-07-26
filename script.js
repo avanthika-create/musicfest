@@ -257,6 +257,16 @@ function renderMySchedule(){
 
         myScheduleContainer.appendChild(item);
 
+        const removeButton = item.querySelector(".remove-artist");
+        removeButton.addEventListener("click", () => {
+            mySchedule = mySchedule.filter(
+                selectedArtist => selectedArtist.name !== artist.name
+            );
+
+            renderMySchedule();
+            renderArtistSchedule(currentDay);
+        });
+
     });
 
 }
