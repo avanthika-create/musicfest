@@ -950,3 +950,88 @@ nav a:hover{
     font-size: 1.15rem;
     color: white;
 }
+
+.cart-add{
+    padding: 12px 28px;
+    margin-top: 20px;
+    border: 1px solid rgba(255,79,200,0.45);
+    border-radius: 999px;
+    background: rgba(255,79,200,0.08);
+    color: var(--pink);
+    font-family: "Hammersmith One", sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.cart-add:hover{
+    background:var(--pink);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow:
+    0 0 25px rgba(255,79,200,0.35);
+}
+
+.quantity-controls{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.quantity-controls button{
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.06);
+    color: white;
+    font-family: "Hammersmith One", sans-serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.quantity-controls button:hover{
+    border-color: var(--pink);
+    background: rgba(255,79,200,0.15);
+    box-shadow: 0 0 15px rgba(255,79,200,0.25);
+    transform: scale(1.08);
+}
+
+.quantity-controls span{
+    min-width: 20px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+#cartCheckout{
+    width: 100%;
+    margin-top: 30px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(
+        90deg,
+        var(--purple),
+        var(--pink)
+    );
+    
+    color: white;
+    font-family: "Hammersmith One", sans-serif;
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+
+    box-shadow: 0 8px 30px rgba(195,0,255,0.22);
+    transition: 0.3s ease;
+}
+
+#cartCheckout:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px rgba(255,79,0.4);
+}
+
+#cartCheckout:active{
+    transform: translate(0) scale(0.99);
+}

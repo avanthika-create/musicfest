@@ -140,15 +140,7 @@ let selectedTicket = "";
 
 const modal = document.getElementById("checkoutModal");
 
-document.querySelectorAll(".ticket-buy").forEach(button=>{
-    button.addEventListener("click",(e)=>{
-        e.preventDefault();
-        selectedTicket = button.dataset.ticket;
 
-        modal.style.display = "flex";
-
-    });
-});
 
 const purchaseBtn = document.getElementById("purchaseBtn");
 
